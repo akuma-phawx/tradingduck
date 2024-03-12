@@ -1,0 +1,6 @@
+-- CreateEnum
+CREATE TYPE "CardLanguage" AS ENUM ('JAPANESE', 'ENGLISH', 'DUTCH', 'GERMAN', 'FRENCH', 'ITALIAN', 'SPANISH', 'PORTUGUESE', 'KOREAN', 'CHINESE', 'RUSSIAN', 'POLISH');
+
+-- AlterTable
+ALTER TABLE "UserCard" ADD COLUMN     "language" "CardLanguage" NOT NULL DEFAULT 'ENGLISH',
+ADD COLUMN     "note" TEXT;

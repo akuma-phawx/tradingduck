@@ -1,0 +1,252 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch"]
+}
+
+model Country {
+  name        String
+  code        String        @id
+  continent   String
+  capital     String
+  iso         Boolean
+  UserProfile UserProfile[]
+  Event       Event[]
+  Tradespot   Tradespot[]
+  Shop        Shop[]
+}
+
+model Language {
+  name     String
+  code     String     @id
+  UserCard UserCard[]
+}
+
+model User {
+  id                  Int                   @id @default(autoincrement())
+  email               String                @unique
+  password            String
+  isVerified          Boolean               @default(false)
+  isPremium           Boolean               @default(false)
+  isBanned            Boolean               @default(false)
+  type                UserType              @default(USER)
+  userProfile         UserProfile?
+  TradeBox            TradeBox[]
+  UserCard            UserCard[]
+  TradeRequestSend    TradeRequest[]        @relation("TradeRequestSend")
+  TradeRequestMessage TradeRequestMessage[]
+  TradeRequestInc     TradeRequest[]        @relation("TradeRequestIncoming")
+  WishList            WishList?
+  UserVerification    UserVerification?
+  EventAttendees      Event[]               @relation("EventAttendees")
+  TradespotsNearBy    Tradespot[]           @relation("Tradespot")
+  ShopsNearBy         Shop[]                @relation("UsersNearByShops")
+  PasswordReset       PasswordReset?
+}
+
+model UserVerification {
+  id        Int      @id @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    Int      @unique
+  token     String   @unique @default(cuid())
+  createdAt DateTime @default(now())
+}
+
+model PasswordReset {
+  id        Int      @id @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    Int      @unique
+  token     String   @unique @default(cuid())
+  createdAt DateTime @default(now())
+}
+
+model UserProfile {
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  fullName    String?
+  image       String?
+  banner      String?
+  description String?
+  location    Country? @relation(fields: [countryId], references: [code])
+  facebook    String?
+  twitter     String?
+  instagram   String?
+  youtube     String?
+  twitch      String?
+  otherLinks  String[]
+  countryId   String?
+  User        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      Int      @unique
+}
+
+model Streamer {
+  id        Int     @id @default(autoincrement())
+  nickname  String  @unique
+  url       String  @unique
+  userImage String?
+  banner    String?
+}
+
+model Shop {
+  id              Int     @id @default(autoincrement())
+  name            String  @unique
+  url             String  @unique
+  logo            String?
+  location        Country @relation(fields: [countryId], references: [code])
+  countryId       String
+  attendingEvents Event[] @relation("EventAttendingShops")
+  instagram       String?
+  description     String
+  usersNearBy     User[]  @relation("UsersNearByShops")
+}
+
+enum UserType {
+  USER
+  ADMIN
+  STORE
+}
+
+enum UserCardCondition {
+  MINT
+  NEAR_MINT
+  EXCELLENT
+  GOOD
+  LIGHT_PLAYED
+  PLAYED
+  POOR
+}
+
+model Card {
+  identifier  String     @id
+  name        String
+  image       String
+  rarity      Rarity     @relation(fields: [rarityName], references: [name])
+  artist      String
+  flavorText  String
+  releaseDate String
+  types       String[]
+  setId       String
+  set         Set        @relation(fields: [setId], references: [identifier])
+  userCards   UserCard[]
+  WishList    WishList?  @relation(fields: [wishListId], references: [id])
+  wishListId  Int?
+  rarityName  String
+}
+
+model Rarity {
+  name String @id
+  Card Card[]
+}
+
+model Set {
+  identifier  String @id
+  name        String
+  image       String
+  releaseDate String
+  cards       Card[]
+}
+
+model UserCard {
+  id           Int               @id @default(autoincrement())
+  user         User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId       Int
+  card         Card              @relation(fields: [cardId], references: [identifier])
+  cardId       String
+  image        String?
+  userImage    String?
+  grade        Int?
+  language     Language          @relation(fields: [languageCode], references: [code])
+  note         String?
+  condition    UserCardCondition
+  tradeBoxes   TradeBox[]
+  tradeWant    TradeRequest[]    @relation("TradeRequestWantCards")
+  tradeGive    TradeRequest[]    @relation("TradeRequestGiveCards")
+  languageCode String
+}
+
+model TradeBox {
+  id          Int        @id @default(autoincrement())
+  name        String
+  description String
+  cards       UserCard[]
+  user        User       @relation(fields: [userId], references: [id])
+  userId      Int
+  updatedAt   DateTime   @updatedAt
+}
+
+model WishList {
+  id     Int    @id @default(autoincrement())
+  cards  Card[]
+  User   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId Int    @unique
+}
+
+model TradeRequest {
+  id            Int                   @id @default(autoincrement())
+  sendUser      User                  @relation("TradeRequestSend", fields: [sendUserId], references: [id])
+  sendUserId    Int
+  incUser       User                  @relation("TradeRequestIncoming", fields: [incUserId], references: [id])
+  incUserId     Int
+  wantCards     UserCard[]            @relation("TradeRequestWantCards")
+  giveCards     UserCard[]            @relation("TradeRequestGiveCards")
+  tradeStatus   TradeStatus           @relation(fields: [tradeStatusId], references: [id])
+  messages      TradeRequestMessage[]
+  tradeStatusId Int
+  createdAt     DateTime              @default(now())
+}
+
+model TradeRequestMessage {
+  id             Int          @id @default(autoincrement())
+  tradeRequest   TradeRequest @relation(fields: [tradeRequestId], references: [id], onDelete: Cascade)
+  tradeRequestId Int
+  user           User         @relation(fields: [userId], references: [id])
+  userId         Int
+  message        String
+  createdAt      DateTime     @default(now())
+}
+
+model TradeStatus {
+  id            Int            @id @default(autoincrement())
+  name          String
+  identifier    String         @unique
+  tradeRequests TradeRequest[]
+}
+
+model Event {
+  id             Int       @id @default(autoincrement())
+  name           String
+  description    String
+  date           DateTime
+  location       Country?  @relation(fields: [countryId], references: [code])
+  eventType      EventType
+  image          String?
+  countryId      String?
+  attendees      User[]    @relation("EventAttendees")
+  attendingShops Shop[]    @relation("EventAttendingShops")
+}
+
+model Tradespot {
+  id               Int     @id @default(autoincrement())
+  name             String  @unique
+  description      String
+  location         String
+  country          Country @relation(fields: [countryShortName], references: [code])
+  image            String?
+  nearByUsers      User[]  @relation("Tradespot")
+  countryShortName String
+}
+
+enum EventType {
+  TOURNAMENT
+  MEETUP
+  OTHER
+  CONFERENCE
+  RELEASE
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Open",
+    "identifier": "open"
+  },
+  {
+    "name": "Closed",
+    "identifier": "closed"
+  },
+  {
+    "name": "Cancelled",
+    "identifier": "cancelled"
+  },
+  {
+    "name": "Pending",
+    "identifier": "pending"
+  },
+  {
+    "name": "Accepted",
+    "identifier": "accepted"
+  },
+  {
+    "name": "Rejected",
+    "identifier": "rejected"
+  },
+  {
+    "name": "Completed",
+    "identifier": "completed-sender"
+  },
+  {
+    "name": "Completed",
+    "identifier": "completed-receiver"
+  },
+  {
+    "name": "Completed",
+    "identifier": "completed"
+  }
+]

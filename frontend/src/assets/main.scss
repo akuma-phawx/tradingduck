@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Quicksand', sans-serif !important;
+}
+body {
+  background: rgba(188, 188, 188, 0.201);
+}
+.bg-gradient-fire {
+  background: linear-gradient(90deg, rgb(227, 80, 80) 0%, rgb(209, 66, 66) 100%);
+}
+.bg-gradient-water {
+  background: linear-gradient(90deg, rgb(9, 176, 236) 0%, rgb(23, 172, 218) 100%);
+}
+.bg-gradient-grass {
+  background: linear-gradient(90deg, hsla(126, 69%, 40%, 1) 0%, hsla(135, 56%, 42%, 1) 98%);
+}
+.bg-gradient-lightning {
+  background: linear-gradient(90deg, rgb(203, 201, 47) 0%, rgb(217, 208, 47) 100%);
+}
+.bg-gradient-psychic {
+  background: linear-gradient(90deg, hsla(297, 72%, 39%, 1) 0%, hsla(293, 87%, 49%, 1) 100%);
+}
+.bg-gradient-colorless {
+  background: linear-gradient(90deg, hsla(0, 49%, 85%, 1) 0%, hsla(309, 58%, 80%, 1) 100%);
+}
+.bg-gradient-fighting {
+  background: linear-gradient(90deg, rgb(211, 145, 127) 0%, rgb(185, 137, 113) 100%);
+}
+.bg-gradient-dragon {
+  background: linear-gradient(90deg, rgb(1, 249, 203) 0%, rgb(127, 29, 232) 100%);
+}
+
+.bg-gradient-none {
+  background: linear-gradient(90deg, rgb(232, 228, 228) 0%, rgb(184, 184, 184) 100%);
+}
+
+.zoom-image {
+  transition: transform 0.5s ease;
+}
+
+.zoom-in {
+  transform: scale(1.05);
+  /* adjust as needed */
+}
+.instagram-gradient {
+  background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  -webkit-background-clip: text; /* Apply gradient as text color */
+  -webkit-text-fill-color: transparent; /* Make text transparent so the gradient shows through */
+}
+.instagram-gradient-rainbow {
+  background: linear-gradient(45deg, #ff0000, #ff6600, #ffcc00, #33cc33, #0066cc, #9900cc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.instagram-gradient-ocean {
+  background: linear-gradient(45deg, #2193b0, #6dd5ed, #ffffff, #ffffff, #b2fefa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.instagram-gradient-sunset {
+  background: linear-gradient(45deg, #ffcc00, #ff6f61, #ff0000, #ad1457, #6a1b9a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.instagram-gradient-forest {
+  background: linear-gradient(45deg, #004c3f, #097969, #0b818c, #6fb98f, #c8db7e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.instagram-gradient-golden-hour {
+  background: linear-gradient(45deg, #ffd700, #ffa500, #ff6600, #ff3c00, #ff0000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.instagram-gradient-lavender {
+  background: linear-gradient(45deg, #b39ddb, #9575cd, #7e57c2, #673ab7, #512da8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.instagram-gradient-earthy {
+  background: linear-gradient(45deg, #8b4513, #a0522d, #cd853f, #d2b48c, #8fbc8f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.instagram-gradient-candy {
+  background: linear-gradient(45deg, #ff1493, #ff69b4, #ff82b2, #ffb6c1, #ff69b4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.instagram-gradient-desert {
+  background: linear-gradient(45deg, #ff9933, #ffcc66, #ffdb4d, #ffe680, #ffd700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.instagram-gradient-sky {
+  background: linear-gradient(45deg, #00bfff, #87cefa, #add8e6, #b0e0e6, #00ced1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.instagram-gradient-autumn {
+  background: linear-gradient(45deg, #ff4500, #ff6347, #ff7f50, #ffa07a, #f4a460);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.instagram-gradient-spring {
+  background: linear-gradient(45deg, #98fb98, #00ff7f, #7fff00, #32cd32, #228b22);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.mystic-twilight {
+  background: linear-gradient(45deg, #63317d, #7a35d6, #3a6ba2, #0071bd, #00a8ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.emerald-isle {
+  background: linear-gradient(45deg, #008b84, #00b2a9, #00d5b7, #00f1a1, #00ff8c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.crimson-sundown {
+  background: linear-gradient(45deg, #ff6347, #ff9a8b, #ff7d70, #ff6f61, #ff8f7d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.azure-waters {
+  background: linear-gradient(45deg, #115978, #1183b7, #0cb799, #06a77d, #00b46f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.golden-aura {
+  background: linear-gradient(45deg, #dcaa4a, #f2a365, #f9b858, #fcb845, #ffd53e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.pink-lemonade-delight {
+  background: linear-gradient(45deg, #ff5c5c, #ff6b6b, #ff8da4, #ffa4b4, #ffc2e2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.midnight-serenity {
+  background: linear-gradient(45deg, #141f78, #363795, #1b4f9e, #005c97, #0066b1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.enchanted-forest {
+  background: linear-gradient(45deg, #004d26, #056635, #329b54, #6ab344, #7ab668);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.desert-sands-oasis {
+  background: linear-gradient(45deg, #ff9a6c, #ffbb91, #ffc5a0, #f3d5a3, #e3e6b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.metal-black {
+  background: linear-gradient(45deg, #000000, #0b0b0b, #1f1f1f, #333333, #4d4d4d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+a.active > span {
+  color: black !important;
+}
+
+.sidenav {
+  z-index: 2399 !important;
+}
+
+.v-btn {
+  text-transform: none !important;
+}
