@@ -1,4 +1,4 @@
-# TradingDuck 🦆🃏
+# TradingDuck 🦆🃏 🔥
 
 TradingDuck is a vibrant platform for Pokémon card collectors! 🌟 It's a hub where collectors can easily send trade requests to fellow enthusiasts, keep track of upcoming Pokémon-related events, and even locate nearby retailers selling Pokémon cards. 🎉
 
